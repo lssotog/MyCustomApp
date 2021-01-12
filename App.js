@@ -9,13 +9,21 @@ const Tab = createBottomTabNavigator();
 
 const App = () => {
   const linkingObject = {
-    prefixes: ['https://app.example.com'],
+    prefixes: ['https://mycustomapp.com', 'mycustomapp://'],
+    config: {
+      screens: {
+        Home: 'home',
+        Camera: 'camera',
+      },
+    },
   };
   return (
-    <NavigationContainer linking={linkingObject}>
+    <NavigationContainer
+      linking={linkingObject}
+      fallback={<Text>Loading...</Text>}>
       <Tab.Navigator>
         <Tab.Screen name="Home" component={Home} />
-        <Tab.Screen name="Settings" component={Camera} />
+        <Tab.Screen name="Camera" component={Camera} />
       </Tab.Navigator>
     </NavigationContainer>
   );

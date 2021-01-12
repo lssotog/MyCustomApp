@@ -11,7 +11,7 @@ export default function Camera() {
   const takePic = async () => {
     if (cameraRef?.current) {
       const options = {quality: 0.5, base64: true, doNotSave: true};
-      const data = await cameraRef?.current?.takePictureAsync(options);
+      const data = await cameraRef?.current?.takePictureAsync(options); // en data queda almacenada la imagen
 
       setShowModal(true);
       setCurrentImage(data);
@@ -34,7 +34,9 @@ export default function Camera() {
         <Button
           title="close modal"
           color="red"
-          onPress={() => setShowModal(false)}
+          onPress={() =>
+            {              
+               setShowModal(false)}}
         />
       </Modal>
       <RNCamera
